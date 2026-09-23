@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  font-family: 'Inter', sans-serif;
+  /* Fond de page brun foncé (ombre portée du logo) : la carte blanche ressort dessus */
+  background-color: #2E2019;
+}
+
+/* Motif du logo (médaillons polynésiens) en fond de page : traits tan sur brun foncé.
+   Tuile extraite du logo : elle se raccorde sans couture tous les 516 × 686 px.
+   Le fond reste sur :root seulement : sur body, il recouvrirait ce calque (z-index -1). */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url("./pattern-tile.png");
+  background-size: 258px 343px;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+button, select, a {
+  font-family: inherit;
+}
+
+#toast {
+  min-width: 220px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
